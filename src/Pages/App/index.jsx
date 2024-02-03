@@ -5,6 +5,7 @@ import MyOrder from '../MyOrder'
 import MyAccount from '../MyAccount'
 import NotFound from '../NotFound'
 import Signln from '../Signln'
+import Navbar from '../../Components/Navbar'
 import './App.css'
 
 const AppRoutes = () => {
@@ -12,11 +13,11 @@ const AppRoutes = () => {
 let routers = useRoutes ([
 
   {path: '/' , element: <Home/>}    ,
-  {path: '/MyAccount' , element: <MyAccount/>}    ,
-  {path: '/MyOrder' , element: <MyOrder/>}    ,
-  {path: '/MyOrders' , element: <MyOrders/>}    ,
+  {path: '/my-account' , element: <MyAccount/>}    ,
+  {path: '/my-order' , element: <MyOrder/>}    ,
+  {path: '/my-orders' , element: <MyOrders/>}    ,
   {path: '/*' , element: <NotFound/>}    ,
-  {path: '/Signln' , element: <Signln/>}    
+  {path: '/Sign-ln' , element: <Signln/>}    
 
 ])
 
@@ -31,6 +32,7 @@ function App() {
  return( 
   <BrowserRouter>
       <AppRoutes/>
+      <Navbar/>
   </BrowserRouter>
 
  )

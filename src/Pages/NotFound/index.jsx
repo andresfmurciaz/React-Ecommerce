@@ -2,7 +2,7 @@
 
 function NotFound() {
  return( 
-  <div className='bg-red-100'> hola mundo</div>
+  <div className='bg-red-100'> h</div>
  )
   
 }
