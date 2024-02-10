@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import {ShoppingBagIcon} from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import { useContext } from 'react'
    
@@ -75,8 +76,9 @@ return(
                      Sign In
                </NavLink>
             </li>
-            <li>
-             carro {context.count}
+            <li className='flex items-center'>
+            <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon> 
+            <div>{context.count}</div>
             </li>
            
         </ul>

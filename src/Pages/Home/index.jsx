@@ -1,3 +1,4 @@
+import ProductDetail from "../../Components/ProductDetail"
 import { useState,useEffect } from "react"
 import Card from "../../Components/card"
 import Layout from "../../Components/Layout"
@@ -20,6 +21,8 @@ hola Home
       items?.map(item => (<Card key={item.id} data={item}/>))
       }
       </div>
+      
+      <ProductDetail></ProductDetail>
 
     </Layout>
  )
