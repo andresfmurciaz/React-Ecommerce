@@ -8,6 +8,7 @@ import NotFound from '../NotFound'
 import Signln from '../Signln'
 import Navbar from '../../Components/Navbar'
 import './App.css'
+import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
 
 const AppRoutes = () => {
 
@@ -35,6 +36,8 @@ function App() {
     <BrowserRouter>
       <AppRoutes/>
       <Navbar/>
+      {/* debe de vivir en toda la aplicacion ya que el carrito se va abrir desde cualquier parte de la paginma */}
+      <CheckoutSideMenu/>
     </BrowserRouter>
   </ShoppingCartProvider>
 

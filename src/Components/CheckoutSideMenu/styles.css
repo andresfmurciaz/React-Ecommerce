@@ -1,0 +1,6 @@
+.checkout-site-menu {
+    /* como el navbar tiene 68de ancho tenemos que quitarselo para que el 100vh no lo tome en cuenta */
+    width: 360px;
+    height: calc(100vh - 68px);
+    top: 68px;
+}

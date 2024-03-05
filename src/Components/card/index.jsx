@@ -1,36 +1,56 @@
-import {PlusIcon} from '@heroicons/react/24/solid'
-import { useContext } from "react"
-import { ShoppingCartContext } from "../../Context"
+import { PlusIcon } from "@heroicons/react/24/solid";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../Context";
 
 const Card = (data) => {
-    // leer el contexto
-const context = useContext(ShoppingCartContext)
+  // leer el contexto
+  const context = useContext(ShoppingCartContext);
 
-
-const showProduct = (product) => {
+  const showProduct = (product) => {
     context.openProductDetail();
-    context.setProductToShow(product)
-}
+    context.setProductToShow(product);
+  };
 
-    return(
 
-        <div className="bg-white cursor-pointer w-56 h-60 rounded-lg"
-        onClick={()=> showProduct(data.data)}> 
-            <figure className="relative mb-2 w-full h-4/5">
-                <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-blanck text-xs m-2 px-3 py-0.5">{data.data.category}</span>
-                <img className="w-full h-full object-cover rounded-lg" src={data.data.image} alt={data.data.title} />
-                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"   onClick={()=> context.setCount(context.count+1)}>
-                <PlusIcon className='h-6 w-6 text-black'></PlusIcon>
+  const addProductToCard = (event, productData) => {
+    //ayuda a que dios eventos funciones en ele mismo return
+    event.stopPropagation();
+    //toma lo que ya tienes en el array y agrega lo nuevo
+    context.setCardProducts([...context.cardProducts, productData]);
+    //aumenta el valor dlecarrito
+    context.setCount(context.count + 1);
+    context.openCheckoutSideMenu();
+    context.closeOpenProductDetail();
+    console.log(context.cardProducts)
+  };
 
-                </div>
-            </figure>
-            <p className="flex justify-between">
-                <span className="text-sm font-light">{data.data.title}</span>
-                <span className="text-lg font-medium">{data.data.price}</span>
-            </p>
+  return (
+    <div
+      className="bg-white cursor-pointer w-56 h-60 rounded-lg"
+      onClick={() => showProduct(data.data)}
+    >
+      <figure className="relative mb-2 w-full h-4/5">
+        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-blanck text-xs m-2 px-3 py-0.5">
+          {data.data.category}
+        </span>
+        <img
+          className="w-full h-full object-cover rounded-lg"
+          src={data.data.image}
+          alt={data.data.title}
+        />
+        <div
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={(event) => addProductToCard(event, data.data)}
+        >
+          <PlusIcon className="h-6 w-6 text-black"></PlusIcon>
         </div>
-)
+      </figure>
+      <p className="flex justify-between">
+        <span className="text-sm font-light">{data.data.title}</span>
+        <span className="text-lg font-medium">{data.data.price}</span>
+      </p>
+    </div>
+  );
+};
 
-}
-
-export default Card
+export default Card;
