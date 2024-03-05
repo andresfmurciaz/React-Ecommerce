@@ -16,11 +16,11 @@ const context = useContext(ShoppingCartContext)
                  onClick={()=> context.closeCheckoutSideMenu()}></XMarkIcon>
             </div>
         </div>
-        <div className='px-6'>
+        <div className='px-6 overflow-y-scroll'>
         {
           context.cardProducts.map(product => (
             <OrderCard
-              key={product.id}
+              key={product.id} 
               title={product.title}
               imageUrl={product.image}
               price={product.price}
