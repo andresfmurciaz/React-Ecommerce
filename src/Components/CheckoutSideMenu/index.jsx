@@ -7,6 +7,13 @@ const CheckoutSideMenu = () =>{
 
 const context = useContext(ShoppingCartContext)
 
+const handleDelete = (id) => {
+const filteredProducts = context.cardProducts.filter(product =>product.id != id)
+context.setCardProducts(filteredProducts)
+
+}
+
+
     return (
     <aside className={`${context.isCheckoutSideMenu ? 'flex': 'hidden'} checkout-site-menu   flex-col fixed right-0 border border-black rounded-lg bg-white`}>
         <div className='flex justify-between items-center p-6'>
@@ -24,6 +31,8 @@ const context = useContext(ShoppingCartContext)
               title={product.title}
               imageUrl={product.image}
               price={product.price}
+              handleDelete={handleDelete}
+              id={product.id}
             />
           ))
         }
