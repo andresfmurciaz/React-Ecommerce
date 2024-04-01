@@ -27,6 +27,10 @@ const [productToShow,setProductToShow] = useState({})
 const [cardProducts,setCardProducts] = useState([])
 
 
+// shopping cart .order ,  en una orden muchos productos.
+const [order,setOrder] = useState([])
+
+
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -41,8 +45,9 @@ const [cardProducts,setCardProducts] = useState([])
             setCardProducts,
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
-            isCheckoutSideMenu
-
+            isCheckoutSideMenu,
+            order,
+            setOrder
         }}>
             {/* el hijo es toda la app */}
             {children}

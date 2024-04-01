@@ -14,6 +14,20 @@ context.setCardProducts(filteredProducts)
 
 }
 
+//add a order a la list de setorder del contexto
+const handleCheckout = () =>{
+
+  const orderToAdd = {
+    date: '01.02.23',
+    products: context.cardProducts,
+    totalProducts : context.cardProducts.length,
+    totalPrice : totalPrice(context.cardProducts)
+  }
+
+  context.setOrder([...context.order , orderToAdd])
+  // se reinicia la lista ya que se guardo la ordencompra
+  context.setCardProducts([])
+}
 
     return (
     <aside className={`${context.isCheckoutSideMenu ? 'flex': 'hidden'} checkout-site-menu   flex-col fixed right-0 border border-black rounded-lg bg-white`}>
@@ -24,7 +38,7 @@ context.setCardProducts(filteredProducts)
                  onClick={()=> context.closeCheckoutSideMenu()}></XMarkIcon>
             </div>
         </div>
-        <div className='px-6 overflow-y-scroll'>
+        <div className='px-6 overflow-y-scroll flex-1'>
         {
           context.cardProducts.map(product => (
             <OrderCard
@@ -39,11 +53,14 @@ context.setCardProducts(filteredProducts)
         }
       </div>
 
-       <div className='px-6'>
-        <p className='flex justify-between items-center'>  
+       <div className='px-6 mb-6'>
+        <p className='flex justify-between items-center mb-2'>  
         <span className='font-light'>Total:</span>
         <span className='font-medium text-2xl'>${totalPrice(context.cardProducts)}</span>
-        </p></div>
+        </p>
+        
+        <button className='w-full bg-black py-3 text-white rounded-lg' onClick={()=>handleCheckout()}>Checkout</button>
+        </div>
     </aside>
 )
 
